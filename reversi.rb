@@ -39,8 +39,8 @@ def line_confirm good, bad
     top_row_loc = 0
     top_cell_loc = 0
     @top_val = 0
-    second_cell_loc = 0
-    second_row_loc = 0
+    @second_cell_loc = 0
+    @second_row_loc = 0
 
     $board.each_with_index do |row, row_num|
         row.each_with_index do |cell, cell_num|
@@ -134,198 +134,85 @@ def move good, bad, input
             $board[row][col] = 3
 
             if row != 7
-                if $board[row + 1][col] == bad
-                    $board[row + 1][col] = 4
-                    if $board[row + 2][col] == bad
-                        $board[row + 2][col] = 5
-                        if $board[row + 3][col] == bad
-                            $board[row + 3][col] = 6
-                            if $board[row + 4][col] == bad
-                                $board[row + 4][col] = 7
-                                if $board[row + 5][col] == bad
-                                    $board[row + 5][col] = 8
-                                    if $board[row + 6][col] == bad
-                                        $board[row + 6][col] = 9
-                                        if $board[row + 7][col] == bad
-                                            $board[row + 7][col] = 10
-                                        end
-                                    end
-                                end
-                            end
-                        end
+                7.times do |index|
+                    if $board[row + (1 + index)][col] == bad
+                        $board[row + (1 + index)][col] = (index+4)
+                    else
+                        break
                     end
-                line_confirm good, bad
                 end
+                line_confirm good, bad
             end
 
             if $board[row - 1][col] == bad
-                $board[row - 1][col] = 4
-                if $board[row - 2][col] == bad
-                    $board[row - 2][col] = 5
-                    if $board[row - 3][col] == bad
-                        $board[row - 3][col] = 6
-                        if $board[row - 4][col] == bad
-                            $board[row - 4][col] = 7
-                            if $board[row - 5][col] == bad
-                                $board[row - 5][col] = 8
-                                if $board[row - 6][col] == bad
-                                    $board[row - 6][col] = 9
-                                    if $board[row - 7][col] == bad
-                                        $board[row - 7][col] = 10
-                                    end
-                                end
-                            end
-                        end
+                7.times do |index|
+                    if $board[row - (1 + index)][col] == bad
+                        $board[row - (1 + index)][col] = (index+4)
+                    else
+                        break
                     end
                 end
-            line_confirm good, bad
-            end
-
-            if $board[row][col + 1] == bad
-                $board[row][col + 1] = 4
-                if $board[row][col + 2] == bad
-                    $board[row][col + 2] = 5
-                    if $board[row][col + 3] == bad
-                        $board[row][col + 3] = 6
-                        if $board[row][col + 4] == bad
-                            $board[row][col + 4] = 7
-                            if $board[row][col + 5] == bad
-                                $board[row][col + 5] = 8
-                                if $board[row][col + 6] == bad
-                                    $board[row][col + 6] = 9
-                                    if $board[row][col + 7] == bad
-                                        $board[row][col + 7] = 10
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            line_confirm good, bad
-            end
-
-            if $board[row][col - 1] == bad
-                $board[row][col - 1] = 4
-                if $board[row][col - 2] == bad
-                    $board[row][col - 2] = 5
-                    if $board[row][col - 3] == bad
-                        $board[row][col - 3] = 6
-                        if $board[row][col - 4] == bad
-                            $board[row][col - 4] = 7
-                            if $board[row][col - 5] == bad
-                                $board[row][col - 5] = 8
-                                if $board[row][col - 6] == bad
-                                    $board[row][col - 6] = 9
-                                    if $board[row][col - 7] == bad
-                                        $board[row][col - 7] = 10
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            line_confirm good, bad
-            end
-
-            if row != 7
-                if $board[row + 1][col + 1] == bad
-                    $board[row + 1][col + 1] = 4
-                    if row != 6
-                        if $board[row + 2][col + 2] == bad
-                            $board[row + 2][col + 2] = 5
-                            if $board[row + 3][col + 3] == bad
-                                $board[row + 3][col + 3] = 6
-                                if $board[row + 4][col + 4] == bad
-                                    $board[row + 4][col + 4] = 7
-                                    if $board[row + 5][col + 5] == bad
-                                        $board[row + 5][col + 5] = 8
-                                        if $board[row + 6][col + 6] == bad
-                                            $board[row + 6][col + 6] = 9
-                                            if $board[row + 7][col + 7] == bad
-                                                $board[row + 7][col + 7] = 10
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
                 line_confirm good, bad
-                end
             end
 
-            if $board[row - 1][col - 1] == bad
-                $board[row - 1][col - 1] = 4
-                if $board[row - 2][col - 2] == bad
-                    $board[row - 2][col - 2] = 5
-                    if $board[row - 3][col - 3] == bad
-                        $board[row - 3][col - 3] = 6
-                        if $board[row - 4][col - 4] == bad
-                            $board[row - 4][col - 4] = 7
-                            if $board[row - 5][col - 5] == bad
-                                $board[row - 5][col - 5] = 8
-                                if $board[row - 6][col - 6] == bad
-                                    $board[row - 6][col - 6] = 9
-                                    if $board[row - 7][col - 7] == bad
-                                        $board[row - 7][col - 7] = 10
-                                    end
-                                end
-                            end
-                        end
-                    end
+            7.times do |index|
+                shift = index + 1
+                if $board[row][col + shift] == bad
+                    $board[row ][col + shift] = (shift + 3)
+                else
+                    break
                 end
-            line_confirm good, bad
-            end
-
-
-            if $board[row - 1][col + 1] == bad
-                $board[row - 1][col + 1] = 4
-                if $board[row - 2][col + 2] == bad
-                    $board[row - 2][col + 2] = 5
-                    if $board[row - 3][col + 3] == bad
-                        $board[row - 3][col + 3] = 6
-                        if $board[row - 4][col + 4] == bad
-                            $board[row - 4][col + 4] = 7
-                            if $board[row - 5][col + 5] == bad
-                                $board[row - 5][col + 5] = 8
-                                if $board[row - 6][col + 6] == bad
-                                    $board[row - 6][col + 6] = 9
-                                    if $board[row - 7][col + 7] == bad
-                                        $board[row - 7][col + 7] = 10
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            line_confirm good, bad
-            end
-
-            if row != 7 #&& col != 7
-                if $board[row + 1][col - 1] == bad
-                    $board[row + 1][col - 1] = 4
-                    if row != 6
-                        if $board[row + 2][col - 2] == bad
-                            $board[row + 2][col - 2] = 5
-                            if $board[row + 3][col - 3] == bad
-                                $board[row + 3][col - 3] = 6
-                                if $board[row + 4][col - 4] == bad
-                                    $board[row + 4][col - 4] = 7
-                                    if $board[row + 5][col - 5] == bad
-                                        $board[row + 5][col - 5] = 8
-                                        if $board[row + 6][col - 6] == bad
-                                            $board[row + 6][col - 6] = 9
-                                            if $board[row + 7][col - 7] == bad
-                                                $board[row + 7][col - 7] = 10
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
                 line_confirm good, bad
+            end
+
+            7.times do |index|
+                shift = index + 1
+                if $board[row][col - shift] == bad
+                    $board[row ][col - shift] = (shift + 3)
+                else
+                    break
                 end
+                line_confirm good, bad
+            end
+
+            7.times do |index|
+                shift = index + 1
+                if $board[row + shift][col + shift] == bad
+                    $board[row + shift][col + shift] = (shift + 3)
+                else
+                    break
+                end
+                line_confirm good, bad
+            end
+
+            7.times do |index|
+                shift = index + 1
+                if $board[row - shift][col - shift] == bad
+                    $board[row - shift][col - shift] = (shift + 3)
+                else
+                    break
+                end
+                line_confirm good, bad
+            end
+
+            7.times do |index|
+                shift = index + 1
+                if $board[row - shift][col + shift] == bad
+                    $board[row - shift][col + shift] = (shift + 3)
+                else
+                    break
+                end
+                line_confirm good, bad
+            end
+
+            7.times do |index|
+                shift = index + 1
+                if $board[row + shift][col - shift] == bad
+                    $board[row + shift][col - shift] = (shift + 3)
+                else
+                    break
+                end
+                line_confirm good, bad
             end
 
             $board.each_with_index do |row, row_num|
