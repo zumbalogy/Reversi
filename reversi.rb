@@ -124,6 +124,8 @@ def switcher good
     end
 end
 
+
+
 def move good, bad, input
     a = input.split
     row = a[0].to_i - 1
@@ -135,8 +137,9 @@ def move good, bad, input
 
             if row != 7
                 7.times do |index|
-                    if $board[row + (1 + index)][col] == bad
-                        $board[row + (1 + index)][col] = (index+4)
+                    shift = index + 1
+                    if $board[row + shift][col] == bad
+                        $board[row + shift][col] = (index + 3)
                     else
                         break
                     end
@@ -144,15 +147,14 @@ def move good, bad, input
                 line_confirm good, bad
             end
 
-            if $board[row - 1][col] == bad
-                7.times do |index|
-                    if $board[row - (1 + index)][col] == bad
-                        $board[row - (1 + index)][col] = (index+4)
-                    else
-                        break
-                    end
+            7.times do |index|
+                shift = index + 1
+                if $board[row - shift][col] == bad
+                    $board[row - shift][col] = (shift + 3)
+                else
+                    break
                 end
-                line_confirm good, bad
+            line_confirm good, bad
             end
 
             7.times do |index|
