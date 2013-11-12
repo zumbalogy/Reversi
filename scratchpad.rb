@@ -4,7 +4,6 @@
 
 
 
-
 def draw_line input
     7.times do |index|
         shift = index + 1
