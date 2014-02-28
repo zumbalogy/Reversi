@@ -238,3 +238,5 @@ play
 #  what if no moves avaliable, but still pieces?
 #  i could scan all possible moves and see, then say?
 #  what happens in real reversi if this the case?
+
+# player o is having hard time moving left of x pieces
